@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+/**
+    全局通用样式
+    用于所有活动，不可更改
+*/
+@import './base/view-base.scss';
+// 默认样式
+@import './base/normalize.scss';

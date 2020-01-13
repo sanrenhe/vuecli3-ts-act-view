@@ -1,0 +1,107 @@
+.ur-my {
+    background: linear-gradient(
+        180deg,
+        rgba(247, 81, 83, 1) 0%,
+        rgba(253, 155, 25, 1) 100%
+    );
+    padding: 15px;
+    box-sizing: border-box;
+    .list {
+        margin: auto;
+        .item {
+            height: 110px;
+            background: #fff;
+            box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            position: relative;
+            padding: 25px 0 25px 15px;
+            box-sizing: border-box;
+            .image {
+                width: 60px;
+                height: 60px;
+                border-radius: 2px;
+                border: 1px solid #e6e6e6;
+                img {
+                    @extend %contain-img;
+                }
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .info {
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: 15px;
+                .title {
+                    .txt {
+                        font-size: 18px;
+                        font-weight: bold;
+                        color: #333;
+                        display: inline-block;
+                        margin: 8px 8px 12px auto;
+                        vertical-align: middle;
+                        max-width: 164px;
+                        @extend %txt-over;
+                        // 红包类型后面接有个标识
+                        &.long {
+                            max-width: 200px;
+                        }
+                    }
+                    .status {
+                        height: 16px;
+                        color: #f76f53;
+                        border: 1px solid rgba(247, 111, 83, 0.3);
+                        padding: 2px 5px;
+                        &.gray {
+                            color: #999;
+                            border: 1px solid rgba(153, 153, 153, 0.3);
+                        }
+                    }
+                }
+                .tips {
+                    font-size: 12px;
+                    color: #999;
+                }
+            }
+            .icon {
+                @extend %bg-img-i-enter;
+                position: absolute;
+                right: 15px;
+                top: 46px;
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+
+    .empty {
+        text-align: center;
+        .no-prize {
+            @extend %bg-img-m-no-prize;
+            width: 277px;
+            height: 170px;
+            margin: 90px auto 22px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff6e9;
+            margin-bottom: 10px;
+        }
+        .tips {
+            font-size: 14px;
+            color: #ffde98;
+        }
+        .button-return {
+            @extend .ur-button;
+            @extend %bg-img-button-return;
+            width: 251px;
+            height: 48px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #902d00;
+            line-height: 50px;
+            margin-top: 50px;
+        }
+    }
+}

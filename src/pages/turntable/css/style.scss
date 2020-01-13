@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+body {
+    font-size: 12px;
+}
+.van-dialog {
+    border-radius: 4px;
+}
+.fix-to-home {
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    right: 26px;
+    bottom: 26px;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 14px;
+    z-index: 100;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 12px 10px;
+    line-height: 16px;
+}
+.err-404 {
+    @extend %bg-img-404;
+    margin-top: 60px;
+    height: 300px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    background-size: 260px;
+}
+.logo {
+    height: 71px;
+    // position: absolute;
+    img {
+        @extend %scale-down-img;
+        object-position: left top;
+    }
+}
+
+%bg-img-button-return {
+    background: linear-gradient(0deg, #fd9c1a 0%, #feff74 100%);
+    border-radius: 50px;
+    box-shadow: 0 4px 1px rgb(238, 82, 53);
+}
+%bg-img-button-mask {
+    background-image: linear-gradient(
+        -87deg,
+        rgb(255, 180, 0) 0%,
+        rgb(255, 132, 0) 100%
+    );
+
+    box-shadow: 0px 32px 35px 0px rgba(223, 67, 6, 0.31);
+
+    border-radius: 50px;
+}
+%bg-img-button-home {
+    background: linear-gradient(0deg, #fd9c1a 0%, #feff74 100%);
+    border-radius: 50px;
+    box-shadow: 0 4px 1px rgb(238, 82, 53);
+}
+
+// 背景图
+$img-map: (
+    "404": "/gallery122/201812/1535275718.png",
+    "wheel-btn": "/hd/wheelnew/ecitic_salaryeasy/wheel-btn.png",
+    "wheel-bg": "/hd/wheelnew/ecitic_salaryeasy/wheel-bg.png",
+    "m-win": "/gallery170/201909/2204414296.png",
+    "m-share": "/gallery170/201912/1456122239.png",
+    "m-not-start": "/gallery170/201909/2204404090.png",
+    "m-no-prize": "/gallery170/201909/2204403590.png",
+    "m-no-chance": "/gallery170/201909/2204396797.png",
+    "m-lose": "/gallery170/201909/2204397535.png",
+    "m-end": "/gallery170/201909/2204385672.png",
+    "i-user": "/gallery170/201909/2204386456.png",
+    "i-phone": "/gallery170/201909/2204371795.png",
+    "i-enter": "/gallery170/201909/2204377712.png",
+    "i-close": "/gallery170/201909/2204365671.png",
+    "i-address": "/gallery170/201909/2204367368.png",
+    "home-bg": "/hd/wheelnew/ecitic_salaryeasy/bg-3.png",
+    "btn-draw": "/hd/wheelnew/ecitic_salaryeasy/btn-draw.png",
+    "bg-rule": "/hd/wheelnew/ecitic_salaryeasy/bg-rule.png",
+    "m-success": "/hd/wheelnew/ecitic_salaryeasy/m-success.png",
+    "m-fail": "/hd/wheelnew/ecitic_salaryeasy/m-fail.png",
+    "home-footer": "/hd/wheelnew/ecitic_salaryeasy/home-footer.png",
+    "hammer": "/gallery170/201909/2204346761.png",
+    "gift-top": "/gallery170/201909/2204346847.png",
+    "gift-bg": "/gallery170/201909/2204335361.png",
+    "detail-bg": "/gallery170/201909/2204333462.png",
+    "button-return": "/gallery170/201909/2204323209.png",
+    "no-chance": "/hd/wheelnew/ecitic_salaryeasy/no-chance.png",
+    "rule": "/hd/wheelnew/ecitic_salaryeasy/rule.png",
+    "nochance": "/hd/wheelnew/ecitic_salaryeasy/nochance.png"
+);
+
+$bg-rule: $img-root + map-get($img-map, "bg-rule");
+@each $label, $map in $img-map {
+    %bg-img-#{$label} {
+        @extend %ur-bg-top;
+        background-image: url($img-root+$map);
+    }
+}
+
+// 首页标题字体颜色
+$fc-title: #fff;
+$fc-tips: #fafb57;
+$fc-prize: #664609;
+
+// 预设
+@import "@base/assets/index.scss";
+@import "@base/assets/cube-base.scss";
+@import "@base/assets/variable.scss";
+// sprites
+// @import "../sprites/icon.px.scss";
+// pages
+@import "./index.scss";
+@import "./my.scss";
+@import "./detail.scss";
+
+@import "./mask.scss";

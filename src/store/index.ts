@@ -1,15 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import store from '@base/store'
 
-Vue.use(Vuex)
+export const env = store.env;
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+export default store;

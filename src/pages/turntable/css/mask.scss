@@ -1,0 +1,516 @@
+.ur-mask {
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    z-index: 99;
+
+    .close {
+        width: 35px;
+        height: 35px;
+        line-height: 33px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        bottom: -55px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        text-align: center;
+    }
+    .bg-img {
+        position: absolute;
+        width: 100%;
+        height: 250px;
+        top: -50px;
+    }
+
+    .button-mask {
+        @extend .ur-button;
+        @extend %bg-img-button-mask;
+
+        width: 120px;
+        height: 35px;
+        line-height: 36px;
+        margin: 25px auto;
+        font-size: 18px;
+        font-weight: bold;
+        color: #a94400;
+        display: inline-block;
+        &:nth-last-child(2) {
+            margin-right: 10px;
+        }
+    }
+    // 活动弹窗
+    .act {
+        position: relative;
+        width: 100%;
+        height: 318px;
+        margin: auto;
+        margin-top: 50vh;
+        transform: translateY(-50%);
+        // background: linear-gradient(
+        //     135deg,
+        //     rgba(29, 162, 253, 1) 0%,
+        //     rgba(70, 104, 255, 1) 100%
+        // );
+        // border-radius: 12px;
+
+        .closeResult {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            position: absolute;
+            top: -8px;
+            right: 16px;
+            text-align: center;
+            .ur-close {
+                width: 30px;
+                &::after {
+                    width: 30px;
+                }
+            }
+        }
+
+        .bg-imgResult {
+            position: absolute;
+            width: 100%;
+            @extend %bg-img-m-fail;
+            height: 100%;
+            .title {
+                position: absolute;
+                top: 26px;
+                font-size: 30px;
+                color: #fff;
+                left: 0;
+                right: 0;
+            }
+        }
+        .button-mask {
+            margin: 0 auto;
+            color: #fff;
+        }
+        .content {
+            position: absolute;
+            top: 80px;
+            padding: 0 40px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            color: #ffb400;
+            height: 210px;
+            overflow: hidden;
+            // .title {
+            //     font-size: 32px;
+            //     font-weight: bold;
+            //     margin: 0px auto 10px;
+            //     max-height: 36px;
+            //     overflow: hidden;
+            // }
+            .desc {
+                height: 80px;
+                font-size: 16px;
+                font-weight: bolder;
+                line-height: 22px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .img {
+            @extend %bg-img-no-chance;
+            margin: auto;
+            width: 136px;
+            height: 120px;
+        }
+    }
+    // .end .bg-img {
+    //     @extend %bg-img-m-end;
+    // }
+    // .not-start .bg-img {
+    //     @extend %bg-img-m-not-start;
+    // }
+    // .no-chance .bg-img {
+    //     @extend %bg-img-m-no-chance;
+    // }
+
+    // 抽奖弹窗
+    .result {
+        position: relative;
+        // width: 286px;
+        width: 100%;
+        margin: auto;
+        margin-top: 50vh;
+        transform: translateY(-50%);
+
+        .closeResult {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            position: absolute;
+            top: -8px;
+            right: 16px;
+            text-align: center;
+            .ur-close {
+                width: 30px;
+                &::after {
+                    width: 30px;
+                }
+            }
+        }
+
+        .bg-imgResult {
+            position: absolute;
+            width: 100%;
+        }
+        .button-mask {
+            margin: -6px auto;
+            color: #fff;
+        }
+
+        .head {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                width: 54px;
+                height: 54px;
+                border-radius: 50%;
+            }
+        }
+        .bg-imgResult .title {
+            position: absolute;
+            top: 148px;
+            font-size: 30px;
+            color: #fff;
+            left: 0;
+            right: 0;
+        }
+        .content {
+            position: absolute;
+            top: 190px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            padding: 5px 40px;
+            color: #ffb400;
+            height: 318px;
+            overflow: hidden;
+            .tip {
+                font-size: 14px;
+                color: #ffb400;
+                overflow: hidden;
+                height: 30px;
+                line-height: 30px;
+            }
+            .tip2 {
+                font-size: 14px;
+                color: #ffb400;
+                padding: 10px;
+            }
+            .title {
+                font-size: 32px;
+                font-weight: bolder;
+                margin: 0px auto 10px;
+                max-height: 36px;
+                overflow: hidden;
+            }
+            .prize {
+                width: 90px;
+                height: 90px;
+                margin: 0 auto 10px auto;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+            .remain {
+                color: #000;
+                span {
+                    color: #f59090;
+                }
+            }
+            .prizeInfo {
+                height: 288px;
+                overflow: hidden;
+            }
+        }
+    }
+    .win .bg-imgResult {
+        @extend %bg-img-m-success;
+        background-size: 100% 100%;
+        height: 100%;
+    }
+    .lose {
+        .bg-imgResult {
+            @extend %bg-img-m-fail;
+            height: 100%;
+            .title {
+                top: 18px;
+            }
+        }
+        .content {
+            top: 70px;
+            padding: 0 40px;
+            height: 230px;
+            .prizeInfo {
+                height: 190px;
+                overflow: hidden;
+            }
+            .tip {
+                white-space: pre-line;
+                font-size: 26px;
+                font-weight: bolder;
+                overflow: hidden;
+                height: 90px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    .result.win {
+        height: 667px;
+    }
+    .result.lose {
+        height: 323px;
+        .title {
+            margin: 8px auto 15px;
+        }
+    }
+    .win .closeResult {
+        top: 110px;
+    }
+
+    //特殊图片窗口弹窗
+    // 活动弹窗
+    .nochance {
+        position: relative;
+        width: 100%;
+        height: 310px;
+        margin: auto;
+        margin-top: 50vh;
+        transform: translateY(-50%);
+        .closeResult {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            position: absolute;
+            top: -8px;
+            right: 16px;
+            text-align: center;
+            .ur-close {
+                width: 30px;
+                &::after {
+                    width: 30px;
+                }
+            }
+        }
+
+        .bg-imgResult {
+            position: absolute;
+            width: 100%;
+            @extend %bg-img-nochance;
+            height: 100%;
+        }
+        .button-mask {
+            margin: 0 auto;
+            color: #fff;
+        }
+
+        .content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 246px;
+        }
+    }
+
+    .nochance.m-rule {
+        height: 435px;
+        .bg-imgResult {
+            @extend %bg-img-rule;
+        }
+        .content {
+            top: 375px;
+        }
+    }
+
+    // 规则
+    .rule {
+        width: 325px;
+        height: 390px;
+        background: #fff;
+        box-shadow: 0px 5px 14px 0px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        margin: 70px auto auto;
+        text-align: left;
+        position: relative;
+        .title {
+            color: #383838;
+            font-size: 18px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .content {
+            font-size: 14px;
+            color: #555;
+            line-height: 24px;
+            .sub-title {
+                margin: 20px 0 12px;
+                color: #fd9a1b;
+                &::before {
+                    content: " ";
+                    background: #fd9a1b;
+                    width: 4px;
+                    height: 12px;
+                    border-radius: 2px;
+                    opacity: 0.6;
+                    display: inline-block;
+                    margin-right: 6px;
+                    vertical-align: middle;
+                }
+                span {
+                    vertical-align: middle;
+                }
+            }
+            p {
+                padding-left: 10px;
+                &.desc {
+                    color: #383838;
+                    white-space: pre-line;
+                }
+            }
+        }
+        .wrap {
+            overflow: auto;
+            padding: 30px;
+            height: 100%;
+            box-sizing: border-box;
+        }
+    }
+
+    // 领奖
+    .prize-form {
+        padding: rem(40) rem(30) rem(30);
+        background: #fff;
+        width: rem(300);
+        box-sizing: border-box;
+        margin: auto;
+        transform: translateY(-50%);
+        margin-top: 50vh;
+        box-shadow: 0px 5px 14px 0px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        .title {
+            font-size: rem(18);
+            font-weight: bold;
+            text-align: center;
+        }
+        .detail {
+            font-size: rem(14);
+            font-weight: bold;
+            margin-top: 26px;
+            .item {
+                &::before {
+                    content: " ";
+                    display: inline-block;
+                    width: 12px;
+                    height: 14px;
+                    vertical-align: middle;
+                    margin-right: 7px;
+                }
+                &.user::before {
+                    @extend %bg-img-i-user;
+                }
+                &.phone::before {
+                    @extend %bg-img-i-phone;
+                }
+                &.address::before {
+                    @extend %bg-img-i-address;
+                }
+                input {
+                    vertical-align: middle;
+                    border: none;
+                    line-height: 30px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    width: 204px;
+                    outline: none;
+                    &::-webkit-input-placeholder {
+                        opacity: 0.8;
+                    }
+                }
+                line-height: 50px;
+                border-bottom: 1px solid #eceef1;
+            }
+        }
+
+        .button-submit {
+            @extend %ur-button;
+            width: 100%;
+            height: 40px;
+            line-height: 42px;
+            margin-top: 20px;
+            border-radius: 4px;
+            background: linear-gradient(
+                270deg,
+                rgba(253, 161, 33, 1) 0%,
+                rgba(245, 85, 81, 1) 100%
+            );
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            &.disabled,
+            &:disabled {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    // 分享
+    .share {
+        .img {
+            @extend %bg-img-m-share;
+            height: 400px;
+            width: 266px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            text-align: center;
+        }
+        .txt1 {
+            color: #ffffff;
+            font-size: 14px;
+            margin-top: 300px;
+        }
+        .txt2 {
+            color: #ffdc36;
+            font-size: 20px;
+            font-weight: bold;
+            width: 200px;
+            margin: 20px auto;
+            line-height: 1.5;
+        }
+        .txt3 {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    }
+
+    // 非白名单
+    .black-list {
+        margin-top: 72px;
+        .text {
+            font-size: 14px;
+            color: #333;
+        }
+    }
+}

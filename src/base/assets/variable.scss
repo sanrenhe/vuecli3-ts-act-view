@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+// 预设的一些通用的样式
+
+@function rem($px) {
+    // @return $px * (1/25) * 1rem;
+    @return $px * 1px;
+}
+
+.ur-wrap {
+    min-height: 100vh;
+    position: relative;
+}
+
+// 隐藏滚动条
+.hidden-scrollbar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    // background-color: transparent;
+}
+
+.none{
+    display: none;
+}
+
+.no-events{
+    pointer-events: none;
+}
+
+// 无图img隐藏
+img:not([src]),
+img[src=""] {
+    visibility: hidden;
+}
+// 靠顶部的背景图常用配置
+%ur-bg-top,
+.ur-bg-top {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center top;
+}
+// 文字溢出省略号
+%txt-over,
+.txt-over {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+// 模拟button a input
+%ur-button,
+.ur-button {
+    border: none;
+    text-decoration: none;
+    display: block;
+    margin: auto;
+    background-color: transparent;
+    text-align: center;
+}
+
+// 叉叉
+%ur-close,
+.ur-close {
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background: #fff;
+    line-height: 0;
+    font-size: 0;
+    vertical-align: middle;
+    transform: rotate(45deg);
+    &:after {
+        content: "/";
+        display: block;
+        width: 16px;
+        height: 2px;
+        background: #fff;
+        transform: rotate(-90deg);
+    }
+}
+// 勾勾
+%ur-apply,
+.ur-apply {
+    display: inline-block;
+    width: 8px;
+    height: 2px;
+    background: #fff;
+    line-height: 0;
+    font-size: 0;
+    vertical-align: middle;
+    transform: rotate(45deg);
+    &:after {
+        content: "/";
+        display: block;
+        width: 16px;
+        height: 2px;
+        background: #fff;
+        transform: rotate(-90deg) translateY(-50%) translateX(50%);
+    }
+}
+
+// 自适应contain图片
+%contain-img,
+.contain-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    // object-fit: scale-down;
+}
+// 自适应contain图片
+%scale-down-img,
+.scale-down-img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+// 自适应cover图片
+%cover-img,
+.cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+// 保留格式
+%pre-wrap,
+.pre-wrap {
+    white-space: pre-wrap;
+}
+
+// 广告图
+.e-e {
+    overflow: hidden;
+    font-size: 0;
+    img {
+        width: 100%;
+        object-fit: scale-down;
+    }
+}
