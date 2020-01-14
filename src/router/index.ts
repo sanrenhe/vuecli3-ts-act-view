@@ -37,14 +37,12 @@ const router = new VueRouter({
 });
 
 router.afterEach(function (to, from) {
+    // 获取活动详情
 	store.act.status = "loading";
 	controller.getActivityInfo().then((res: any) => {
+        console.log(res);
         store.act.data = res.data;
-        if (res.status == "success") {
-            store.act.status = "success";
-        } else {
-            store.act.status = "fail";
-        }
+        store.act.status = "success";
     });
 });
 

@@ -5,38 +5,29 @@
 
         <div class="ur-wrap ur-index"
              v-edit-tap="{name:'background'}"
-             :style="act.data.templet_set.background_pic|bgImgFilter">
+             :style="act.data.act.info.background_pic|bgImgFilter">
             <header class="header">
                 <nav class="nav">
-                    <a v-if="act.data.ycbUrl"
-                       :href="act.data.ycbUrl">我的奖品</a>
+                    <a v-if="act.data.act.info.ycbUrl"
+                       :href="act.data.act.info.ycbUrl">我的奖品</a>
                     <router-link v-else
                                  to="./my">我的奖品</router-link>
                 </nav>
                 <figure class="logo">
-                    <img v-if="act.data.templet_set.logo_is_show==1"
-                         :src="act.data.templet_set.logo_url">
+                    <img v-if="act.data.act.info.logo.is_show==1"
+                         :src="act.data.act.info.logo.pic_url">
                 </figure>
-                <!-- <figure class="logo">
-                    <img src="../assets/img/logo.png">
-                </figure> -->
             </header>
 
             <main class="main">
-                <!-- <h1 class="title"
-                    v-edit-tap="{name:'title'}">
-                    {{act.data.title}}
-                </h1> -->
-
                 <div class="title-pic"
                      v-edit-tap="{name:'title'}">
-                    <img v-if="act.data.templet_set.title_pic"
-                         :src="act.data.templet_set.title_pic">
-                    <!-- <img src="../assets/img/title.png"> -->
+                    <img v-if="act.data.act.info.title_pic"
+                         :src="act.data.act.info.title_pic">
                 </div>
                 <h3 class="sub-title"
                     v-edit-tap="{name:'sub_name'}">
-                    {{act.data.templet_set.sub_name}}
+                    {{act.data.act.info.sub_name}}
                 </h3>
                 <div class="tip">活动还剩
                     <van-count-down :time="actCD"
@@ -60,21 +51,11 @@
                              @click="commonDrawPrize">点击<br />抽奖</div>
                     </div>
                 </article>
-                <a class="login"
-                   :href="act.data.templet_set.h5_url"
-                   v-if="salaryeasy==2">立即报名</a>
-                <div class="remain"
-                     v-if="act.data.activity_status==='starting'&&salaryeasy==1">
-                    - 您还有 {{userExtInfo.remain_num}} 次抽奖机会 -
-                </div>
                 <div class="rules">
                     <div class="title">活动规则</div>
                     <div class="info"
-                         v-html="act.data.rules"></div>
+                         v-html="act.data.act.info.rules"></div>
                 </div>
-                <!-- <button class="button-home"
-                        v-if="act.data.share_button_is_show==1"
-                        @click="showShare=true">分享赢取抽奖</button> -->
             </main>
 
             <section class="prizes"
@@ -97,12 +78,12 @@
                 </div>
             </section>
 
-            <template v-if="act.data.templet_set.is_lamp_on==1">
-                <aside v-if="act.data.templet_set.custom_lamp_text"
+            <template v-if="act.data.act.info.templet_set.is_lamp_on==1">
+                <aside v-if="act.data.act.info.templet_set.custom_lamp_text"
                        class="marquee">
                     <div class="wrap hidden-scrollbar"
                          ref="marquee">
-                        <p>{{act.data.templet_set.custom_lamp_text}}</p>
+                        <p>{{act.data.act.info.templet_set.custom_lamp_text}}</p>
                     </div>
                 </aside>
                 <aside v-else-if="!isEmpty(winList)"
@@ -119,29 +100,17 @@
             </template>
 
             <div class="user-count"
-                 v-if="act.data.templet_set.person_is_show==1">
-                已有 {{userCount}} 人参与
+                 v-if="act.data.act.info.user_num.is_show==1">
+                已有 {{act.data.act.info.user_num.num_base}} 人参与
             </div>
             <footer class="foot"></footer>
         </div>
 
-        <!-- 活动状态弹窗 -->
-        <mask-activity :show.sync="showActivity"
-                       :remain="userExtInfo.remain_num"
-                       :islogin="salaryeasy" />
         <!-- 抽奖结果弹窗 -->
         <mask-result :show.sync="showResult"
                      :prize="prize"
                      :remain="userExtInfo.remain_num" />
-
-        <mask-pic :show.sync="showPic" :islogin="haslogin" @changeStatus="changeStatus"/>
-        <!-- 分享弹窗 -->
-        <mask-share :show.sync="showShare" />
-        <!-- 黑名单 -->
-        <mask-black-list />
-
         <ad pos="2" />
-
     </div>
 </template>
 
@@ -230,8 +199,9 @@ export default class Index extends ViewBase {
     salaryeasy = 0;
 
     created() {
+        console.log(this.act);
         this.regEditUpdate([]);
-        this.actCD = this.formatDate(this.act.data.end_time) * 1000 - Date.now();
+        this.actCD = this.formatDate(this.act.data.act.end_time) * 1000 - Date.now();
     }
 
     formatNum(num: number) {
@@ -241,7 +211,7 @@ export default class Index extends ViewBase {
     // 活动倒计时
     cdFinishAct() {
         this.actCD = -1;
-        this.act.data.activity_status = "has_end";
+        this.act.data.act.info.activity_status = "has_end";
     }
     // 旋转
     roll(n: number, data: Dictionary<any>, cb: Function) {
@@ -525,7 +495,7 @@ export default class Index extends ViewBase {
     // 抽奖
     commonDrawPrize() {
         // 不在活动时间
-        if (this.$data.act.data.activity_status !== 'starting') {
+        if (this.$data.act.data.act.info.activity_status !== 'starting') {
             this.showActivity = true;
             return;
         }
